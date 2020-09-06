@@ -1,0 +1,22 @@
+{
+  "name": "learn_nodejs_webserver",
+  "version": "1.0.0",
+  "description": "Learn Nodejs webserver",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manhpham90vn/Learn_NodeJs_WebServer.git"
+  },
+  "author": "Manh Pham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manhpham90vn/Learn_NodeJs_WebServer/issues"
+  },
+  "homepage": "https://github.com/manhpham90vn/Learn_NodeJs_WebServer#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
