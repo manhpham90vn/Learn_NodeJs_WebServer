@@ -1,6 +1,8 @@
 const express = require('express')
 const logger = require('morgan')
+const dotenv = require('dotenv')
 
+dotenv.config()
 const app = express()
 const userRoute = require('./routers/user')
 
@@ -29,19 +31,21 @@ app.use((req, res, next) => {
 })
 
 // Error handle function
-app.use(() => {
-  const error = app.get('env') === 'development' ? err : {}
-  const status = error.status || 500
+const errorHandler = (err, req, res, next) => {
+  const error = process.env.NODE_ENV === 'development' ? err : {}
+  const status = err.status || 500
 
   return res.status(status).json({
     error: {
       message: error.message || 'Error'
     }
   })
-})
+}
+
+app.use(errorHandler)
 
 // Start server
-const port = app.get('port') || 3000
+const port = process.env.PORT || 3000
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
