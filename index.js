@@ -1,11 +1,18 @@
 const express = require('express')
 const logger = require('morgan')
 const dotenv = require('dotenv')
+const mongoose = require('mongoose')
 
 dotenv.config()
+
+mongoose.connect('mongodb://localhost:27017/mydb', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
+  console.log('connect success')
+}).catch(() => {
+  console.log('connect error')
+})
+
 const app = express()
 const userRoute = require('./routers/user')
-
 
 // Middlewares
 app.use(logger('dev'))
@@ -48,5 +55,5 @@ app.use(errorHandler)
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`App listening at http://localhost:${port}`)
 })
